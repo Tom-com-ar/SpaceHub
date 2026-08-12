@@ -1,0 +1,18 @@
+<div class="alerts-container">
+  <h3>Alertas en Tiempo Real</h3>
+  <div *ngFor="let alert of alerts"
+       class="alert-item"
+       [ngClass]="{
+         'alert-info': alert.type === 'info',
+         'alert-warning': alert.type === 'warning',
+         'alert-danger': alert.type === 'danger'
+       }">
+    <span class="alert-icon">
+      <mat-icon *ngIf="alert.type === 'info'">info</mat-icon>
+      <mat-icon *ngIf="alert.type === 'warning'">warning</mat-icon>
+      <mat-icon *ngIf="alert.type === 'danger'">error</mat-icon>
+    </span>
+    <span class="alert-message">{{ alert.message }}</span>
+    <span class="alert-time">{{ alert.timestamp | date:'HH:mm:ss' }}</span>
+  </div>
+</div>
