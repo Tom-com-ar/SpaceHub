@@ -1,22 +1,49 @@
-.dashboard-container {
-  padding: 24px;
+.dashboard-page {
+  padding: 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  h1 {
-    margin: 0 0 24px 0;
-    color: #333;
-    font-size: 28px;
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .header-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      color: white;
+    }
   }
 
-  h2 {
-    margin: 0 0 16px 0;
-    color: #333;
-    font-size: 20px;
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #1a1a2e;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 4px 0 0 0;
+    color: #888;
+    font-size: 14px;
   }
 }
 
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -26,51 +53,63 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 16px !important;
+    padding: 24px !important;
+  }
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     mat-icon {
-      font-size: 40px;
-      width: 40px;
-      height: 40px;
-      padding: 12px;
-      border-radius: 50%;
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      color: white;
     }
-  }
-
-  &.active mat-card-content mat-icon {
-    background-color: rgba(63, 81, 181, 0.1);
-    color: #3f51b5;
-  }
-
-  &.completed mat-card-content mat-icon {
-    background-color: rgba(76, 175, 80, 0.1);
-    color: #4caf50;
-  }
-
-  &.failed mat-card-content mat-icon {
-    background-color: rgba(244, 67, 54, 0.1);
-    color: #f44336;
   }
 
   .stat-info {
-    display: flex;
-    flex-direction: column;
-
     .stat-number {
-      font-size: 28px;
-      font-weight: 600;
-      color: #333;
+      display: block;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 1;
     }
 
     .stat-label {
-      font-size: 14px;
-      color: #666;
+      display: block;
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
     }
   }
+
+  &.active-card .stat-icon {
+    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+  }
+
+  &.completed-card .stat-icon {
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+  }
+
+  &.failed-card .stat-icon {
+    background: linear-gradient(135deg, #f44336, #ef5350);
+  }
+}
+
+h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  color: #1a1a2e;
 }
 
 .missions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
 }

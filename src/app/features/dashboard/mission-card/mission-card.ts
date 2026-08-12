@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Mission } from '../../../core/models/mission.interface';
+import { MissionService } from '../../../core/services/mission.service';
 
 @Component({
   selector: 'app-mission-card',
@@ -9,24 +10,23 @@ import { Mission } from '../../../core/models/mission.interface';
 })
 export class MissionCard {
   @Input() mission!: Mission;
+  statuses = ['Activa', 'Completada', 'Fallida'];
 
-  getStatusColor(): string {
+  constructor(private missionService: MissionService) {}
+
+  getStatusClass(): string {
     switch (this.mission.status) {
-      case 'Activa':
-        return 'primary';
-      case 'Completada':
-        return 'accent';
-      case 'Fallida':
-        return 'warn';
-      default:
-        return 'primary';
+      case 'Activa': return 'status-active';
+      case 'Completada': return 'status-completed';
+      case 'Fallida': return 'status-failed';
+      default: return '';
     }
   }
 
-  getProgressColor(): string {
-    if (this.mission.progress >= 80) return '#4caf50';
-    if (this.mission.progress >= 50) return '#ff9800';
-    if (this.mission.progress >= 30) return '#ffc107';
-    return '#f44336';
+  onStatusChange(newStatus: Mission['status']) {
+    if (!this.mission || newStatus === this.mission.status) {
+      return;
+    }
+    this.missionService.updateMission(this.mission.id, { status: newStatus });
   }
 }

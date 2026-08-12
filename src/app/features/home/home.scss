@@ -1,0 +1,153 @@
+.home-container {
+  min-height: calc(100vh - 64px);
+}
+
+.hero-section {
+  position: relative;
+  padding: 80px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #0a1628 0%, #1a237e 50%, #0d47a1 100%);
+  overflow: hidden;
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .stars {
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(2px 2px at 40% 70%, white, transparent),
+        radial-gradient(2px 2px at 60% 20%, white, transparent),
+        radial-gradient(2px 2px at 80% 60%, white, transparent),
+        radial-gradient(1px 1px at 10% 80%, white, transparent),
+        radial-gradient(1px 1px at 70% 40%, white, transparent),
+        radial-gradient(1px 1px at 90% 90%, white, transparent);
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+
+    .hero-icon {
+      font-size: 72px;
+      width: 72px;
+      height: 72px;
+      color: #ff9800;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 0 20px rgba(255, 152, 0, 0.5));
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 52px;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 4px;
+    }
+
+    p {
+      margin: 12px 0 0 0;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.menu-section {
+  padding: 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    margin: 0 0 24px 0;
+    font-size: 24px;
+    color: #1a1a2e;
+  }
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.menu-card {
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+    .card-icon {
+      transform: scale(1.1);
+    }
+  }
+
+  mat-card-content {
+    text-align: center;
+    padding: 32px 24px !important;
+
+    .card-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: transform 0.3s;
+
+      mat-icon {
+        font-size: 36px;
+        width: 36px;
+        height: 36px;
+        color: white;
+      }
+    }
+
+    .dashboard-icon {
+      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+    }
+
+    .trajectory-icon {
+      background: linear-gradient(135deg, #1a237e, #283593);
+    }
+
+    .astronauts-icon {
+      background: linear-gradient(135deg, #00897b, #26a69a);
+    }
+
+    .missions-icon {
+      background: linear-gradient(135deg, #f57c00, #ff9800);
+    }
+
+    h3 {
+      margin: 0 0 8px 0;
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #888;
+    }
+  }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}

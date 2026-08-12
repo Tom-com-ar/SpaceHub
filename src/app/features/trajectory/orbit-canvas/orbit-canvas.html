@@ -1,0 +1,35 @@
+<div class="space">
+  <div class="stars"></div>
+
+  <div class="solar-system">
+    <div class="earth"></div>
+
+    <div *ngFor="let mission of activeMissions; trackBy: trackByMissionId"
+         class="orbit-wrapper"
+         [style.--size]="(mission.orbitSize * 2) + 'px'">
+      <div class="orbit-ring"></div>
+      <div class="satellite"
+           [style.animation-duration]="mission.speed + 's'"
+           [style.--orbit-size]="mission.orbitSize + 'px'">
+        <div class="satellite-dot" [style.background]="mission.color" [style.box-shadow]="'0 0 12px ' + mission.color"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <h3>Misiones Orbitales</h3>
+    <p class="hint">Activa/desactiva para mostrar en el mapa</p>
+
+    <div *ngFor="let mission of missions; trackBy: trackByMissionId" class="mission-row">
+      <div class="mission-color" [style.background]="isVisibleOnMap(mission) ? mission.color : '#555'"></div>
+      <span class="mission-name">{{ mission.name }}</span>
+      <button mat-mini-fab
+              [color]="isVisibleOnMap(mission) ? 'primary' : ''"
+              [disabled]="!mission.statusActive"
+              (click)="toggleMission(mission)">
+        <mat-icon>{{ isVisibleOnMap(mission) ? 'visibility' : 'visibility_off' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

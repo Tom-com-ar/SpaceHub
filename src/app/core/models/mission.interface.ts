@@ -7,4 +7,7 @@ export interface Mission {
   destination: string;
   crew: number;
   description: string;
+  icon: string;
+  color: string;
+  visibleOnMap: boolean;
 }

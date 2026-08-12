@@ -1,0 +1,164 @@
+.space {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: radial-gradient(ellipse at center, #0a1628 0%, #000010 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, white, transparent),
+    radial-gradient(1px 1px at 30% 60%, white, transparent),
+    radial-gradient(1px 1px at 50% 10%, white, transparent),
+    radial-gradient(1px 1px at 70% 80%, white, transparent),
+    radial-gradient(1px 1px at 90% 40%, white, transparent),
+    radial-gradient(1px 1px at 15% 90%, white, transparent),
+    radial-gradient(1px 1px at 85% 15%, white, transparent);
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+.solar-system {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.earth {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 35% 35%, #64b5f6, #1976d2, #0d47a1);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(33, 150, 243, 0.6);
+}
+
+.orbit-wrapper {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.satellite {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: spin linear infinite;
+  top: 0;
+  left: 0;
+}
+
+.satellite-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+}
+
+.satellite-label {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: spin linear infinite;
+  /* Counter-rotate to keep text readable */
+  animation-direction: reverse;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.control-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(10, 22, 40, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  min-width: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
+  h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: #90caf9;
+    font-weight: 500;
+  }
+
+  .hint {
+    margin: 0 0 16px 0;
+    font-size: 11px;
+    color: #607d8b;
+  }
+
+  .mission-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .mission-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .mission-name {
+      flex: 1;
+      font-size: 13px;
+    }
+
+    button {
+      transform: scale(0.8);
+    }
+  }
+}

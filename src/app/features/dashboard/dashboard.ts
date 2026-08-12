@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MissionService } from '../../core/services/mission.service';
 import { Mission } from '../../core/models/mission.interface';
 
@@ -9,31 +10,34 @@ import { Mission } from '../../core/models/mission.interface';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
-export class Dashboard implements OnInit, OnDestroy {
-  missions: Mission[] = [];
-  private subscription: Subscription = new Subscription();
+export class Dashboard implements OnDestroy {
+  missions$: Observable<Mission[]>;
+  activeCount$: Observable<number>;
+  completedCount$: Observable<number>;
+  failedCount$: Observable<number>;
+  private subscription = new Subscription();
 
-  constructor(private missionService: MissionService) {}
+  constructor(private missionService: MissionService) {
+    this.missions$ = this.missionService.getMissions();
 
-  ngOnInit() {
-    this.subscription = this.missionService.getMissions().subscribe(missions => {
-      this.missions = missions;
-    });
+    this.activeCount$ = this.missions$.pipe(
+      map(m => m.filter(x => (x.status || '').toString().trim().toLowerCase() === 'activa').length)
+    );
+
+    this.completedCount$ = this.missions$.pipe(
+      map(m => m.filter(x => (x.status || '').toString().trim().toLowerCase() === 'completada').length)
+    );
+
+    this.failedCount$ = this.missions$.pipe(
+      map(m => m.filter(x => (x.status || '').toString().trim().toLowerCase() === 'fallida').length)
+    );
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  get activeMissions(): number {
-    return this.missions.filter(m => m.status === 'Activa').length;
-  }
-
-  get completedMissions(): number {
-    return this.missions.filter(m => m.status === 'Completada').length;
-  }
-
-  get failedMissions(): number {
-    return this.missions.filter(m => m.status === 'Fallida').length;
+  trackByMissionId(_: number, mission: Mission): number {
+    return mission.id;
   }
 }

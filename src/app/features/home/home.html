@@ -1,0 +1,58 @@
+<div class="home-container">
+  <div class="hero-section">
+    <div class="hero-bg">
+      <div class="stars"></div>
+    </div>
+    <div class="hero-content">
+      <mat-icon class="hero-icon">rocket</mat-icon>
+      <h1>SpaceHub</h1>
+      <p>Centro de Control de Misiones Espaciales</p>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <h2>Panel de Control</h2>
+
+    <div class="menu-grid">
+      <a mat-card routerLink="/dashboard" class="menu-card">
+        <mat-card-content>
+          <div class="card-icon dashboard-icon">
+            <mat-icon>dashboard</mat-icon>
+          </div>
+          <h3>Dashboard</h3>
+          <p>Panel de control de misiones en tiempo real</p>
+        </mat-card-content>
+      </a>
+
+      <a mat-card routerLink="/trajectory" class="menu-card">
+        <mat-card-content>
+          <div class="card-icon trajectory-icon">
+            <mat-icon>orbit</mat-icon>
+          </div>
+          <h3>Trayectoria</h3>
+          <p>Mapa orbital y seguimiento de naves</p>
+        </mat-card-content>
+      </a>
+
+      <a mat-card routerLink="/astronauts" class="menu-card">
+        <mat-card-content>
+          <div class="card-icon astronauts-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <h3>Astronautas</h3>
+          <p>Equipo en mision y estado</p>
+        </mat-card-content>
+      </a>
+
+      <a mat-card routerLink="/missions" class="menu-card">
+        <mat-card-content>
+          <div class="card-icon missions-icon">
+            <mat-icon>rocket_launch</mat-icon>
+          </div>
+          <h3>Misiones</h3>
+          <p>Historial y gestion de misiones</p>
+        </mat-card-content>
+      </a>
+    </div>
+  </div>
+</div>

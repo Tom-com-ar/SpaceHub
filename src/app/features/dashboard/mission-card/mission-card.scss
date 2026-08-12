@@ -1,85 +1,176 @@
 .mission-card {
-  height: 100%;
+  margin: 8px;
+  border-radius: 16px;
+  border-left: 4px solid transparent;
   transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
 
-  .mission-icon {
-    background-color: #3f51b5;
-    color: white;
-    padding: 8px;
-    border-radius: 50%;
+  &.status-active {
+    border-left-color: #3f51b5;
   }
 
-  .status-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 16px;
+  &.status-completed {
+    border-left-color: #4caf50;
+  }
 
-    &.primary {
-      background-color: rgba(63, 81, 181, 0.1);
-      color: #3f51b5;
+  &.status-failed {
+    border-left-color: #f44336;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        color: white;
+      }
     }
 
-    &.accent {
-      background-color: rgba(255, 152, 0, 0.1);
-      color: #ff9800;
+    .card-title {
+      flex: 1;
+      min-width: 0;
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a1a2e;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .destination {
+        font-size: 12px;
+        color: #888;
+      }
     }
 
-    &.warn {
-      background-color: rgba(244, 67, 54, 0.1);
-      color: #f44336;
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+
+      &.status-active {
+        background: rgba(63, 81, 181, 0.1);
+        color: #3f51b5;
+      }
+
+      &.status-completed {
+        background: rgba(76, 175, 80, 0.1);
+        color: #4caf50;
+      }
+
+      &.status-failed {
+        background: rgba(244, 67, 54, 0.1);
+        color: #f44336;
+      }
+    }
+
+    .status-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+
+      .status-select {
+        font-size: 12px;
+        padding: 4px 6px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+      }
     }
   }
 
   .progress-section {
     margin-bottom: 16px;
 
-    .progress-label {
+    .progress-header {
       display: flex;
       justify-content: space-between;
-      font-size: 14px;
+      font-size: 12px;
+      color: #888;
       margin-bottom: 8px;
-      color: #666;
+
+      .progress-value {
+        font-weight: 600;
+        color: #1a1a2e;
+      }
     }
 
-    mat-progress-bar {
-      border-radius: 4px;
-      height: 8px;
+    .progress-bar {
+      height: 6px;
+      background: #eee;
+      border-radius: 3px;
+      overflow: hidden;
+
+      .progress-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.5s ease;
+
+        &.status-active {
+          background: linear-gradient(90deg, #3f51b5, #5c6bc0);
+        }
+
+        &.status-completed {
+          background: linear-gradient(90deg, #4caf50, #66bb6a);
+        }
+
+        &.status-failed {
+          background: linear-gradient(90deg, #f44336, #ef5350);
+        }
+      }
     }
   }
 
-  .mission-info {
+  .card-footer {
     display: flex;
     gap: 16px;
     margin-bottom: 12px;
 
-    .info-item {
+    .footer-item {
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: 13px;
-      color: #666;
+      font-size: 12px;
+      color: #888;
 
       mat-icon {
-        font-size: 16px;
-        width: 16px;
-        height: 16px;
-        color: #999;
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+        color: #aaa;
       }
     }
   }
 
   .description {
+    margin: 0;
     font-size: 13px;
     color: #666;
-    line-height: 1.4;
-    margin: 0;
+    line-height: 1.5;
   }
 }
