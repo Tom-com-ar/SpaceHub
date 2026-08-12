@@ -1,0 +1,38 @@
+<mat-card class="mission-card">
+  <mat-card-header>
+    <mat-icon mat-card-avatar class="mission-icon">rocket</mat-icon>
+    <mat-card-title>{{ mission.name }}</mat-card-title>
+    <mat-card-subtitle>{{ mission.destination }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="status-badge" [ngClass]="getStatusColor()">
+      {{ mission.status }}
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-label">
+        <span>Progreso</span>
+        <span>{{ mission.progress }}%</span>
+      </div>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="mission.progress"
+        [color]="getStatusColor()">
+      </mat-progress-bar>
+    </div>
+
+    <div class="mission-info">
+      <div class="info-item">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ mission.launchDate | date:'dd/MM/yyyy' }}</span>
+      </div>
+      <div class="info-item" *ngIf="mission.crew > 0">
+        <mat-icon>people</mat-icon>
+        <span>{{ mission.crew }} tripulantes</span>
+      </div>
+    </div>
+
+    <p class="description">{{ mission.description }}</p>
+  </mat-card-content>
+</mat-card>

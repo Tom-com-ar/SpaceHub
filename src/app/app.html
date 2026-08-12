@@ -1,8 +1,17 @@
 <mat-toolbar color="primary">
   <mat-icon>rocket</mat-icon>
-  <span>{{ title }} - Centro de Control de Misiones</span>
+  <span>{{ title }}</span>
+  <span class="spacer"></span>
+  <nav>
+    <a mat-button routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </a>
+  </nav>
 </mat-toolbar>
 
 <main class="main-content">
-  <app-alert-list></app-alert-list>
+  <router-outlet></router-outlet>
 </main>
+
+<app-alert-list></app-alert-list>
