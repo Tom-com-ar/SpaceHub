@@ -56,6 +56,7 @@ export class AstronautService {
 
   private astronautsSubject = new BehaviorSubject<Astronaut[]>(this.astronauts);
   astronauts$ = this.astronautsSubject.asObservable();
+  private simulationInterval?: ReturnType<typeof setInterval>;
 
   getAstronauts(): Observable<Astronaut[]> {
     return this.astronauts$;
@@ -65,11 +66,52 @@ export class AstronautService {
     return this.astronauts.find(a => a.id === id);
   }
 
-  updateAstronautHealth(id: number, health: number): void {
-    const astronaut = this.astronauts.find(a => a.id === id);
-    if (astronaut) {
-      astronaut.health = health;
+  updateAstronaut(id: number, updates: Partial<Astronaut>): void {
+    const index = this.astronauts.findIndex(a => a.id === id);
+    if (index !== -1) {
+      this.astronauts[index] = { ...this.astronauts[index], ...updates };
       this.astronautsSubject.next([...this.astronauts]);
+    }
+  }
+
+  updateAstronautHealth(id: number, health: number): void {
+    this.updateAstronaut(id, { health: Math.max(0, Math.min(100, health)) });
+  }
+
+  startHealthSimulation(): void {
+    if (this.simulationInterval) {
+      return;
+    }
+
+    this.simulationInterval = setInterval(() => {
+      let changed = false;
+
+      this.astronauts = this.astronauts.map(astronaut => {
+        if (astronaut.status !== 'En Mision') {
+          return astronaut;
+        }
+
+        const delta = Math.floor(Math.random() * 5) - 2;
+        const health = Math.max(85, Math.min(100, astronaut.health + delta));
+
+        if (health !== astronaut.health) {
+          changed = true;
+          return { ...astronaut, health };
+        }
+
+        return astronaut;
+      });
+
+      if (changed) {
+        this.astronautsSubject.next([...this.astronauts]);
+      }
+    }, 3000);
+  }
+
+  stopHealthSimulation(): void {
+    if (this.simulationInterval) {
+      clearInterval(this.simulationInterval);
+      this.simulationInterval = undefined;
     }
   }
 }

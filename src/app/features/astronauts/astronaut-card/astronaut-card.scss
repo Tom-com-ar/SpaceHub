@@ -1,0 +1,278 @@
+.astronaut-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(26, 26, 46, 0.06);
+  padding: 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+
+  &.status-mission::before { background: linear-gradient(90deg, #00897b, #26a69a); }
+  &.status-training::before { background: linear-gradient(90deg, #3f51b5, #7986cb); }
+  &.status-rest::before { background: linear-gradient(90deg, #9e9e9e, #bdbdbd); }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(26, 26, 46, 0.12);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+
+      &.status-mission {
+        background: linear-gradient(135deg, #00897b, #26a69a);
+        box-shadow: 0 6px 16px rgba(0, 137, 123, 0.35);
+      }
+
+      &.status-training {
+        background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+        box-shadow: 0 6px 16px rgba(63, 81, 181, 0.35);
+      }
+
+      &.status-rest {
+        background: linear-gradient(135deg, #757575, #9e9e9e);
+        box-shadow: 0 6px 16px rgba(117, 117, 117, 0.3);
+      }
+    }
+
+    .live-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 137, 123, 0.4);
+      animation: livePulse 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes livePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.5; }
+  }
+
+  .card-title {
+    flex: 1;
+    min-width: 0;
+
+    h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 1.2;
+    }
+
+    .role {
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    &.status-mission {
+      background: rgba(0, 137, 123, 0.1);
+      color: #00897b;
+      .badge-dot { background: #00897b; }
+    }
+
+    &.status-training {
+      background: rgba(63, 81, 181, 0.1);
+      color: #3f51b5;
+      .badge-dot { background: #3f51b5; }
+    }
+
+    &.status-rest {
+      background: rgba(158, 158, 158, 0.15);
+      color: #616161;
+      .badge-dot { background: #9e9e9e; }
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+
+    .info-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      background: #f8f9fc;
+      border-radius: 14px;
+      border: 1px solid #f0f1f5;
+
+      .info-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        mat-icon {
+          font-size: 18px;
+          width: 18px;
+          height: 18px;
+          color: white;
+        }
+
+        &.mission-icon {
+          background: linear-gradient(135deg, #00897b, #26a69a);
+        }
+
+        &.exp-icon {
+          background: linear-gradient(135deg, #ff9800, #ffb74d);
+        }
+      }
+
+      .info-text {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+
+        .info-label {
+          font-size: 10px;
+          font-weight: 600;
+          color: #9ca3af;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+
+        .info-value {
+          font-size: 13px;
+          font-weight: 600;
+          color: #374151;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  .health-section {
+    padding: 14px;
+    background: linear-gradient(135deg, #fafbfc, #f5f6fa);
+    border-radius: 14px;
+    border: 1px solid #eef0f5;
+
+    .health-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .health-title {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #4b5563;
+
+        mat-icon {
+          font-size: 18px;
+          width: 18px;
+          height: 18px;
+          color: #e53935;
+        }
+      }
+
+      .health-value {
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1;
+
+        &.health-excellent { color: #2e7d32; }
+        &.health-good { color: #ef6c00; }
+        &.health-warning { color: #c62828; }
+      }
+    }
+
+    .health-bar {
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 99px;
+      overflow: hidden;
+
+      .health-fill {
+        height: 100%;
+        border-radius: 99px;
+        transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &.health-excellent {
+          background: linear-gradient(90deg, #43a047, #66bb6a);
+          box-shadow: 0 0 10px rgba(76, 175, 80, 0.45);
+        }
+
+        &.health-good {
+          background: linear-gradient(90deg, #fb8c00, #ffb74d);
+          box-shadow: 0 0 10px rgba(255, 152, 0, 0.4);
+        }
+
+        &.health-warning {
+          background: linear-gradient(90deg, #e53935, #ef5350);
+          box-shadow: 0 0 10px rgba(244, 67, 54, 0.4);
+        }
+      }
+    }
+
+    .health-hint {
+      display: block;
+      margin-top: 8px;
+      font-size: 11px;
+      color: #00897b;
+      font-weight: 500;
+      font-style: italic;
+    }
+  }
+}

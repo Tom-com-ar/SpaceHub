@@ -1,4 +1,4 @@
-.dashboard-page {
+.astronauts-page {
   padding: 32px 40px;
   max-width: 1200px;
   margin: 0 auto;
@@ -13,7 +13,7 @@
   .header-icon {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+    background: linear-gradient(135deg, #00897b, #26a69a);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -39,6 +39,34 @@
     color: #888;
     font-size: 14px;
   }
+
+  .live-indicator {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(244, 67, 54, 0.08);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #f44336;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #f44336;
+      border-radius: 50%;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
 }
 
 .stats-row {
@@ -89,16 +117,16 @@
     }
   }
 
-  &.active-card .stat-icon {
+  &.mission-card-stat .stat-icon {
+    background: linear-gradient(135deg, #00897b, #26a69a);
+  }
+
+  &.training-card-stat .stat-icon {
     background: linear-gradient(135deg, #3f51b5, #5c6bc0);
   }
 
-  &.completed-card .stat-icon {
-    background: linear-gradient(135deg, #4caf50, #66bb6a);
-  }
-
-  &.failed-card .stat-icon {
-    background: linear-gradient(135deg, #f44336, #ef5350);
+  &.health-card-stat .stat-icon {
+    background: linear-gradient(135deg, #e53935, #ef5350);
   }
 }
 
@@ -108,7 +136,7 @@ h2 {
   color: #1a1a2e;
 }
 
-.missions-grid {
+.astronauts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 20px;

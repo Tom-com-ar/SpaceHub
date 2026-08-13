@@ -1,0 +1,62 @@
+<div class="astronauts-page">
+  <div class="page-header">
+    <div class="header-icon">
+      <mat-icon>groups</mat-icon>
+    </div>
+    <div>
+      <h1>Detalle de Astronautas</h1>
+      <p>Monitoreo en tiempo real del equipo espacial</p>
+    </div>
+    <div class="live-indicator">
+      <span class="live-dot"></span>
+      En vivo
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <mat-card class="stat-card mission-card-stat">
+      <mat-card-content>
+        <div class="stat-icon">
+          <mat-icon>rocket_launch</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ inMissionCount$ | async }}</span>
+          <span class="stat-label">En Mision</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card training-card-stat">
+      <mat-card-content>
+        <div class="stat-icon">
+          <mat-icon>fitness_center</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ trainingCount$ | async }}</span>
+          <span class="stat-label">Entrenamiento</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card health-card-stat">
+      <mat-card-content>
+        <div class="stat-icon">
+          <mat-icon>favorite</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ avgHealth$ | async }}%</span>
+          <span class="stat-label">Salud Promedio</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <h2>Tripulacion</h2>
+
+  <div class="astronauts-grid">
+    <app-astronaut-card
+      *ngFor="let astronaut of astronauts$ | async; trackBy: trackByAstronautId"
+      [astronaut]="astronaut">
+    </app-astronaut-card>
+  </div>
+</div>

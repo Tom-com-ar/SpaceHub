@@ -1,40 +1,52 @@
 <mat-card class="mission-card" [ngClass]="getStatusClass()">
-  <div class="card-header">
-    <div class="card-icon" [style.background]="mission.color">
-      <mat-icon>{{ mission.icon }}</mat-icon>
-    </div>
-    <div class="card-title">
-      <h3>{{ mission.name }}</h3>
-      <span class="destination">{{ mission.destination }}</span>
-    </div>
-    <div class="status-block">
-      <span class="status-badge" [ngClass]="getStatusClass()">{{ mission.status }}</span>
-      <select class="status-select" [ngModel]="mission.status" (ngModelChange)="onStatusChange($event)">
-        <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
-      </select>
-    </div>
-  </div>
+  <div class="card-accent" [style.background]="mission.color"></div>
 
-  <div class="progress-section">
-    <div class="progress-header">
-      <span>Progreso</span>
-      <span class="progress-value">{{ mission.progress }}%</span>
+  <div class="card-body">
+    <div class="card-header">
+      <div class="card-icon" [style.background]="mission.color">
+        <mat-icon>{{ mission.icon }}</mat-icon>
+      </div>
+      <div class="card-title">
+        <h3>{{ mission.name }}</h3>
+        <span class="destination">
+          <mat-icon>place</mat-icon>
+          {{ mission.destination }}
+        </span>
+      </div>
     </div>
-    <div class="progress-bar">
-      <div class="progress-fill" [style.width.%]="mission.progress" [ngClass]="getStatusClass()"></div>
-    </div>
-  </div>
 
-  <div class="card-footer">
-    <div class="footer-item">
-      <mat-icon>calendar_today</mat-icon>
-      <span>{{ mission.launchDate | date:'dd/MM/yyyy' }}</span>
+    <div class="status-control">
+      <label class="status-label">Estado</label>
+      <div class="status-select-wrap" [ngClass]="getStatusClass()">
+        <span class="status-dot"></span>
+        <select [ngModel]="mission.status" (ngModelChange)="onStatusChange($event)">
+          <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+        </select>
+        <mat-icon class="select-arrow">expand_more</mat-icon>
+      </div>
     </div>
-    <div class="footer-item" *ngIf="mission.crew > 0">
-      <mat-icon>people</mat-icon>
-      <span>{{ mission.crew }} tripulantes</span>
-    </div>
-  </div>
 
-  <p class="description">{{ mission.description }}</p>
+    <div class="progress-section">
+      <div class="progress-header">
+        <span>Progreso de mision</span>
+        <span class="progress-value">{{ mission.progress }}%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="mission.progress" [ngClass]="getStatusClass()"></div>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-chip">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ mission.launchDate | date:'dd MMM yyyy' }}</span>
+      </div>
+      <div class="meta-chip" *ngIf="mission.crew > 0">
+        <mat-icon>groups</mat-icon>
+        <span>{{ mission.crew }} tripulantes</span>
+      </div>
+    </div>
+
+    <p class="description">{{ mission.description }}</p>
+  </div>
 </mat-card>

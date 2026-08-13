@@ -1,0 +1,51 @@
+<mat-card class="astronaut-card" [ngClass]="getStatusClass()">
+  <div class="card-top">
+    <div class="avatar-wrap">
+      <div class="avatar" [ngClass]="getStatusClass()">{{ getInitials() }}</div>
+      <span class="live-ring" *ngIf="astronaut.status === 'En Mision'"></span>
+    </div>
+    <div class="card-title">
+      <h3>{{ astronaut.name }}</h3>
+      <span class="role">{{ astronaut.role }}</span>
+    </div>
+    <span class="status-badge" [ngClass]="getStatusClass()">
+      <span class="badge-dot"></span>
+      {{ astronaut.status }}
+    </span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <div class="info-icon mission-icon">
+        <mat-icon>rocket_launch</mat-icon>
+      </div>
+      <div class="info-text">
+        <span class="info-label">Mision</span>
+        <span class="info-value">{{ astronaut.mission }}</span>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="info-icon exp-icon">
+        <mat-icon>military_tech</mat-icon>
+      </div>
+      <div class="info-text">
+        <span class="info-label">Experiencia</span>
+        <span class="info-value">{{ astronaut.experience }} anos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="health-section">
+    <div class="health-header">
+      <div class="health-title">
+        <mat-icon>monitor_heart</mat-icon>
+        <span>Estado de salud</span>
+      </div>
+      <span class="health-value" [ngClass]="getHealthClass()">{{ astronaut.health }}%</span>
+    </div>
+    <div class="health-bar">
+      <div class="health-fill" [style.width.%]="astronaut.health" [ngClass]="getHealthClass()"></div>
+    </div>
+    <span class="health-hint" *ngIf="astronaut.status === 'En Mision'">Actualizando en tiempo real</span>
+  </div>
+</mat-card>

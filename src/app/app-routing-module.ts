@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'trajectory',
     loadChildren: () => import('./features/trajectory/trajectory-module').then(m => m.TrajectoryModule)
+  },
+  {
+    path: 'astronauts',
+    loadChildren: () => import('./features/astronauts/astronauts-module').then(m => m.AstronautsModule)
   }
 ];
 
