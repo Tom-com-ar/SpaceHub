@@ -1,8 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 import { MissionService } from '../../core/services/mission.service';
 import { Mission } from '../../core/models/mission.interface';
+import { MissionForm } from './mission-form/mission-form';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +19,7 @@ export class Dashboard implements OnDestroy {
   failedCount$: Observable<number>;
   private subscription = new Subscription();
 
-  constructor(private missionService: MissionService) {
+  constructor(private missionService: MissionService, private dialog: MatDialog) {
     this.missions$ = this.missionService.getMissions();
 
     this.activeCount$ = this.missions$.pipe(
@@ -39,5 +41,15 @@ export class Dashboard implements OnDestroy {
 
   trackByMissionId(_: number, mission: Mission): number {
     return mission.id;
+  }
+
+  openCreateDialog(): void {
+    const ref = this.dialog.open(MissionForm, { data: {}, width: '560px' });
+
+    ref.afterClosed().subscribe((result: Omit<Mission, 'id'> | undefined) => {
+      if (result) {
+        this.missionService.addMission(result);
+      }
+    });
   }
 }

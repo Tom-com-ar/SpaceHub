@@ -13,6 +13,14 @@
           {{ mission.destination }}
         </span>
       </div>
+      <div class="card-actions">
+        <button mat-icon-button matTooltip="Editar misión" (click)="openEditDialog()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Eliminar misión" class="delete-btn" (click)="deleteMission()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
 
     <div class="status-control">
