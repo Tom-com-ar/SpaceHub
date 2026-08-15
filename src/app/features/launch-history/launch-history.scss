@@ -1,0 +1,149 @@
+.launch-history-page {
+  padding: 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .header-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #3949ab, #5c6bc0);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      color: white;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #1a1a2e;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 4px 0 0 0;
+    color: #888;
+    font-size: 14px;
+  }
+}
+
+.filters-bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+
+  .search-field {
+    flex: 1 1 260px;
+    min-width: 220px;
+  }
+
+  mat-form-field {
+    width: 160px;
+  }
+
+  button {
+    height: 56px;
+    border-radius: 10px;
+  }
+}
+
+.result-count {
+  color: #888;
+  font-size: 13px;
+  margin: 0 0 12px 4px;
+}
+
+.table-wrapper {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.launch-table {
+  width: 100%;
+
+  th {
+    background: #f8f9fc;
+    color: #555;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  td {
+    font-size: 14px;
+    color: #333;
+  }
+
+  tr.mat-mdc-row:hover {
+    background: #f8f9fc;
+  }
+}
+
+.status-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &.exitoso {
+    background: #e6f4ea;
+    color: #1e7e34;
+  }
+
+  &.fallido {
+    background: #fdecea;
+    color: #c62828;
+  }
+
+  &.programado {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 48px 16px;
+  color: #aaa;
+
+  mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .launch-history-page {
+    padding: 20px 16px;
+  }
+
+  .filters-bar mat-form-field {
+    width: 100%;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+}

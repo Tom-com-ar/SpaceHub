@@ -1,0 +1,47 @@
+<div class="chat-page">
+  <div class="page-header">
+    <div class="header-icon">
+      <mat-icon>forum</mat-icon>
+    </div>
+    <div>
+      <h1>Chat de Control</h1>
+      <p>Comunicación en tiempo real con la sala de control</p>
+    </div>
+  </div>
+
+  <mat-card class="chat-card">
+    <div class="messages" #messagesContainer>
+      <div
+        *ngFor="let msg of messages; trackBy: trackByMessageId"
+        class="message-row"
+        [ngClass]="msg.sender"
+      >
+        <div class="bubble">
+          <span class="sender-label">
+            <mat-icon *ngIf="msg.sender === 'control'">satellite_alt</mat-icon>
+            <mat-icon *ngIf="msg.sender === 'usuario'">person</mat-icon>
+            <mat-icon *ngIf="msg.sender === 'sistema'">smart_toy</mat-icon>
+            {{ msg.sender === 'control' ? 'Sala de Control' : msg.sender === 'usuario' ? 'Vos' : 'Sistema' }}
+          </span>
+          <p>{{ msg.text }}</p>
+          <span class="timestamp">{{ msg.timestamp | date: 'HH:mm:ss' }}</span>
+        </div>
+      </div>
+      <div #scrollAnchor></div>
+    </div>
+
+    <div class="chat-input">
+      <mat-form-field appearance="outline" class="input-field">
+        <input
+          matInput
+          [(ngModel)]="draft"
+          (keyup.enter)="send()"
+          placeholder='Escribí un mensaje o comando ("status", "help")'
+        />
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="send()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>

@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'astronauts',
     loadChildren: () => import('./features/astronauts/astronauts-module').then(m => m.AstronautsModule)
+  },
+  {
+    path: 'launch-history',
+    loadChildren: () => import('./features/launch-history/launch-history-module').then(m => m.LaunchHistoryModule)
+  },
+  {
+    path: 'chat-control',
+    loadChildren: () => import('./features/chat-control/chat-control-module').then(m => m.ChatControlModule)
   }
 ];
 
