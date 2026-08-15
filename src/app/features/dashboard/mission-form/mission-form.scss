@@ -1,8 +1,22 @@
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background: var(--shb-panel) !important;
+  border: 1px solid var(--shb-line);
+  border-radius: 0 !important;
+}
+
 h2[mat-dialog-title] {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #1a1a2e;
+  color: var(--shb-ink);
+  font-family: var(--shb-font-display);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  mat-icon {
+    color: var(--shb-cyan);
+  }
 }
 
 .form-grid {
@@ -27,6 +41,12 @@ h2[mat-dialog-title] {
 
 mat-dialog-content {
   padding-top: 8px !important;
+}
+
+mat-dialog-actions {
+  border-top: 1px solid var(--shb-line);
+  padding-top: 14px !important;
+  margin-top: 4px;
 }
 
 @media (max-width: 600px) {

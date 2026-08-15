@@ -8,36 +8,36 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 
   .header-icon {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, #00897b, #26a69a);
-    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    background: var(--shb-green-dim);
+    border: 1px solid var(--shb-green);
     display: flex;
     align-items: center;
     justify-content: center;
 
     mat-icon {
-      font-size: 28px;
-      width: 28px;
-      height: 28px;
-      color: white;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      color: var(--shb-green);
     }
   }
 
   h1 {
     margin: 0;
-    font-size: 28px;
-    color: #1a1a2e;
-    font-weight: 600;
+    font-size: 22px;
+    color: var(--shb-ink);
+    font-weight: 700;
   }
 
   p {
     margin: 4px 0 0 0;
-    color: #888;
-    font-size: 14px;
+    color: var(--shb-ink-dim);
+    font-size: 13px;
   }
 
   .live-indicator {
@@ -45,19 +45,20 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 14px;
-    background: rgba(244, 67, 54, 0.08);
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #f44336;
+    padding: 7px 12px;
+    border: 1px solid var(--shb-red);
+    background: var(--shb-red-dim);
+    font-family: var(--shb-font-display);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--shb-red);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.06em;
 
     .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #f44336;
+      width: 7px;
+      height: 7px;
+      background: var(--shb-red);
       border-radius: 50%;
       animation: pulse 1.5s ease-in-out infinite;
     }
@@ -72,72 +73,97 @@
 .stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 1px;
+  background: var(--shb-line);
+  border: 1px solid var(--shb-line);
   margin-bottom: 32px;
 }
 
 .stat-card {
+  background: var(--shb-panel) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
   mat-card-content {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 24px !important;
+    padding: 22px !important;
   }
 
   .stat-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     mat-icon {
-      font-size: 28px;
-      width: 28px;
-      height: 28px;
-      color: white;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
     }
   }
 
   .stat-info {
     .stat-number {
       display: block;
-      font-size: 32px;
+      font-family: var(--shb-font-display);
+      font-size: 28px;
       font-weight: 700;
-      color: #1a1a2e;
+      color: var(--shb-ink);
       line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-label {
       display: block;
-      font-size: 13px;
-      color: #888;
-      margin-top: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--shb-ink-dim);
+      margin-top: 6px;
     }
   }
 
   &.mission-card-stat .stat-icon {
-    background: linear-gradient(135deg, #00897b, #26a69a);
+    background: var(--shb-green-dim);
+    mat-icon { color: var(--shb-green); }
   }
 
   &.training-card-stat .stat-icon {
-    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+    background: var(--shb-cyan-dim);
+    mat-icon { color: var(--shb-cyan); }
   }
 
   &.health-card-stat .stat-icon {
-    background: linear-gradient(135deg, #e53935, #ef5350);
+    background: var(--shb-red-dim);
+    mat-icon { color: var(--shb-red); }
   }
 }
 
 h2 {
-  margin: 0 0 16px 0;
-  font-size: 20px;
-  color: #1a1a2e;
+  margin: 0 0 18px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--shb-ink-dim);
 }
 
 .astronauts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .astronauts-page {
+    padding: 20px 16px;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
 }

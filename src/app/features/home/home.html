@@ -1,58 +1,91 @@
 <div class="home-container">
-  <div class="hero-section">
-    <div class="hero-bg">
-      <div class="stars"></div>
-    </div>
-    <div class="hero-content">
-      <mat-icon class="hero-icon">rocket</mat-icon>
-      <h1>SpaceHub</h1>
-      <p>Centro de Control de Misiones Espaciales</p>
-    </div>
-  </div>
+  <section class="hero-section">
+    <div class="hero-grid-overlay"></div>
 
-  <div class="menu-section">
-    <h2>Panel de Control</h2>
+    <div class="hero-content">
+      <div class="hero-eyebrow shb-eyebrow">
+        <span class="rec-dot"></span>
+        SESIÓN ACTIVA · CONTROL DE MISIÓN
+      </div>
+
+      <h1>SPACE<span class="accent">HUB</span></h1>
+      <p class="hero-tagline">Centro de control para monitoreo de misiones, trayectorias y tripulación en tiempo real.</p>
+
+      <div class="hero-stats shb-hud-corners">
+        <div class="hero-stat">
+          <span class="hero-stat-label">MISIONES ACTIVAS</span>
+          <span class="hero-stat-value shb-mono">{{ activeMissionCount$ | async }}</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">TRIPULANTES EN VUELO</span>
+          <span class="hero-stat-value shb-mono">{{ crewInFlight$ | async }}</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">ALERTAS 24H</span>
+          <span class="hero-stat-value shb-mono">{{ alertCount$ | async }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <div class="section-heading">
+      <span class="shb-eyebrow">MÓDULOS DISPONIBLES</span>
+      <h2>Panel de Control</h2>
+    </div>
 
     <div class="menu-grid">
-      <a mat-card routerLink="/dashboard" class="menu-card">
-        <mat-card-content>
-          <div class="card-icon dashboard-icon">
-            <mat-icon>dashboard</mat-icon>
-          </div>
-          <h3>Dashboard</h3>
-          <p>Panel de control de misiones en tiempo real</p>
-        </mat-card-content>
+      <a routerLink="/dashboard" class="menu-card shb-hud-corners">
+        <span class="menu-index shb-mono">01</span>
+        <mat-icon class="menu-icon">dashboard</mat-icon>
+        <h3>Dashboard</h3>
+        <p>Panel de misiones en tiempo real, con progreso y estado de cada una.</p>
+        <span class="menu-arrow">
+          <mat-icon>arrow_forward</mat-icon>
+        </span>
       </a>
 
-      <a mat-card routerLink="/trajectory" class="menu-card">
-        <mat-card-content>
-          <div class="card-icon trajectory-icon">
-            <mat-icon>orbit</mat-icon>
-          </div>
-          <h3>Trayectoria</h3>
-          <p>Mapa orbital y seguimiento de naves</p>
-        </mat-card-content>
+      <a routerLink="/trajectory" class="menu-card shb-hud-corners">
+        <span class="menu-index shb-mono">02</span>
+        <mat-icon class="menu-icon">orbit</mat-icon>
+        <h3>Trayectoria</h3>
+        <p>Mapa orbital y seguimiento de naves en tiempo real.</p>
+        <span class="menu-arrow">
+          <mat-icon>arrow_forward</mat-icon>
+        </span>
       </a>
 
-      <a mat-card routerLink="/astronauts" class="menu-card">
-        <mat-card-content>
-          <div class="card-icon astronauts-icon">
-            <mat-icon>people</mat-icon>
-          </div>
-          <h3>Astronautas</h3>
-          <p>Equipo en mision y estado</p>
-        </mat-card-content>
+      <a routerLink="/astronauts" class="menu-card shb-hud-corners">
+        <span class="menu-index shb-mono">03</span>
+        <mat-icon class="menu-icon">groups</mat-icon>
+        <h3>Astronautas</h3>
+        <p>Equipo en misión: rol, experiencia y estado de salud.</p>
+        <span class="menu-arrow">
+          <mat-icon>arrow_forward</mat-icon>
+        </span>
       </a>
 
-      <a mat-card routerLink="/missions" class="menu-card">
-        <mat-card-content>
-          <div class="card-icon missions-icon">
-            <mat-icon>rocket_launch</mat-icon>
-          </div>
-          <h3>Misiones</h3>
-          <p>Historial y gestion de misiones</p>
-        </mat-card-content>
+      <a routerLink="/launch-history" class="menu-card shb-hud-corners">
+        <span class="menu-index shb-mono">04</span>
+        <mat-icon class="menu-icon">history</mat-icon>
+        <h3>Historial</h3>
+        <p>Registro de lanzamientos, con búsqueda y filtros.</p>
+        <span class="menu-arrow">
+          <mat-icon>arrow_forward</mat-icon>
+        </span>
+      </a>
+
+      <a routerLink="/chat-control" class="menu-card shb-hud-corners">
+        <span class="menu-index shb-mono">05</span>
+        <mat-icon class="menu-icon">forum</mat-icon>
+        <h3>Chat de Control</h3>
+        <p>Comunicación con la sala de control y comandos de misión.</p>
+        <span class="menu-arrow">
+          <mat-icon>arrow_forward</mat-icon>
+        </span>
       </a>
     </div>
-  </div>
+  </section>
 </div>

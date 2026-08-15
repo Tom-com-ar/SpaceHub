@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   height: 500px;
-  background: radial-gradient(ellipse at center, #0a1628 0%, #000010 100%);
-  border-radius: 16px;
+  background: var(--shb-void);
+  border: 1px solid var(--shb-line);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -17,18 +17,21 @@
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(1px 1px at 10% 20%, white, transparent),
-    radial-gradient(1px 1px at 30% 60%, white, transparent),
-    radial-gradient(1px 1px at 50% 10%, white, transparent),
-    radial-gradient(1px 1px at 70% 80%, white, transparent),
-    radial-gradient(1px 1px at 90% 40%, white, transparent),
-    radial-gradient(1px 1px at 15% 90%, white, transparent),
-    radial-gradient(1px 1px at 85% 15%, white, transparent);
+    linear-gradient(rgba(77, 217, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77, 217, 232, 0.05) 1px, transparent 1px),
+    radial-gradient(1px 1px at 10% 20%, rgba(232, 237, 244, 0.6), transparent),
+    radial-gradient(1px 1px at 30% 60%, rgba(232, 237, 244, 0.6), transparent),
+    radial-gradient(1px 1px at 50% 10%, rgba(232, 237, 244, 0.6), transparent),
+    radial-gradient(1px 1px at 70% 80%, rgba(232, 237, 244, 0.6), transparent),
+    radial-gradient(1px 1px at 90% 40%, rgba(232, 237, 244, 0.6), transparent),
+    radial-gradient(1px 1px at 15% 90%, rgba(232, 237, 244, 0.6), transparent),
+    radial-gradient(1px 1px at 85% 15%, rgba(232, 237, 244, 0.6), transparent);
+  background-size: 40px 40px, 40px 40px, auto, auto, auto, auto, auto, auto, auto;
   animation: twinkle 4s ease-in-out infinite alternate;
 }
 
 @keyframes twinkle {
-  from { opacity: 0.5; }
+  from { opacity: 0.6; }
   to { opacity: 1; }
 }
 
@@ -42,13 +45,13 @@
 }
 
 .earth {
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle at 35% 35%, #64b5f6, #1976d2, #0d47a1);
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle at 35% 35%, var(--shb-cyan), #1c6f7d, #0a3038);
   border-radius: 50%;
   position: absolute;
   z-index: 10;
-  box-shadow: 0 0 30px rgba(33, 150, 243, 0.6);
+  box-shadow: 0 0 30px rgba(77, 217, 232, 0.5);
 }
 
 .orbit-wrapper {
@@ -64,7 +67,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border: 1px dashed var(--shb-line-bright);
   border-radius: 50%;
 }
 
@@ -78,30 +81,13 @@
 }
 
 .satellite-dot {
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   position: absolute;
-  top: -6px;
+  top: -5.5px;
   left: 50%;
-  margin-left: -6px;
-}
-
-.satellite-label {
-  position: absolute;
-  top: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-size: 10px;
-  white-space: nowrap;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  animation: spin linear infinite;
-  /* Counter-rotate to keep text readable */
-  animation-direction: reverse;
+  margin-left: -5.5px;
 }
 
 @keyframes spin {
@@ -113,25 +99,27 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(10, 22, 40, 0.95);
-  padding: 20px;
-  border-radius: 12px;
-  color: white;
+  background: rgba(16, 22, 31, 0.95);
+  padding: 18px;
+  color: var(--shb-ink);
   min-width: 220px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--shb-line);
   backdrop-filter: blur(10px);
 
   h3 {
     margin: 0 0 4px 0;
-    font-size: 16px;
-    color: #90caf9;
-    font-weight: 500;
+    font-family: var(--shb-font-display);
+    font-size: 12px;
+    color: var(--shb-cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .hint {
     margin: 0 0 16px 0;
     font-size: 11px;
-    color: #607d8b;
+    color: var(--shb-ink-faint);
   }
 
   .mission-row {
@@ -139,22 +127,23 @@
     align-items: center;
     gap: 10px;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--shb-line);
 
     &:last-child {
       border-bottom: none;
     }
 
     .mission-color {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       transition: background 0.3s, box-shadow 0.3s;
     }
 
     .mission-name {
       flex: 1;
-      font-size: 13px;
+      font-size: 12.5px;
+      color: var(--shb-ink);
     }
 
     button {

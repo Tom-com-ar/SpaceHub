@@ -1,9 +1,16 @@
 <mat-toolbar class="main-toolbar">
   <a routerLink="/home" class="logo-link">
-    <mat-icon>rocket</mat-icon>
-    <span>{{ title }}</span>
+    <span class="logo-mark">
+      <mat-icon>rocket</mat-icon>
+    </span>
+    <span class="logo-text">
+      <span class="logo-title">{{ title }}</span>
+      <span class="logo-sub">MISSION CONTROL</span>
+    </span>
   </a>
+
   <span class="spacer"></span>
+
   <nav>
     <a mat-button routerLink="/home" routerLinkActive="active">
       <mat-icon>home</mat-icon>
@@ -30,6 +37,14 @@
       Chat
     </a>
   </nav>
+
+  <span class="spacer"></span>
+
+  <div class="met-readout">
+    <span class="met-dot"></span>
+    <span class="met-label">MET</span>
+    <span class="met-value shb-mono">{{ met }}</span>
+  </div>
 </mat-toolbar>
 
 <main class="main-content">
